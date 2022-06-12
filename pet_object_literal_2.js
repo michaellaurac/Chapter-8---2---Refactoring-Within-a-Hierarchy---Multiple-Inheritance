@@ -29,3 +29,17 @@ bitey.bite = function () {
 };
 myPet.bite();
 myPet.bark();
+
+/* eslint-env mocha */
+
+const wish = require("wish");
+const deepEqual = require("deep-equal");
+
+describe("the file", () => {
+  it("returns the expected prototype and properties of myPet object", () => {
+    wish(deepEqual(Object.keys(myPet), ["beFluffy", "bite", "bark"]));
+    // wish(deepEqual(myPet.__proto__, {}));
+    wish(deepEqual(Object.getOwnPropertyNames(myPet), ["beFluffy", "bite", "bark"]));
+    wish(deepEqual(Object.getPrototypeOf(myPet), {}));
+  });
+});
